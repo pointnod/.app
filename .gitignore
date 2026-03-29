@@ -1,25 +1,25 @@
 # ============================================
-# .gitignore — nod.app v1.0.0 (mobile)
+# .gitignore — pointnod-app v1.1.0
 # Séparation stricte : code source ↔ artefacts
 # ============================================
 
 # ── Dépendances Node ──
-# Tous les paquets npm sont régénérables via `npm install`.
 node_modules/
+**/node_modules/
 
 # ── Build Vite (régénérable via `npm run build`) ──
 dist/
+**/dist/
 
-# ── Outils de compilation portables (JDK, SDK) ──
-# On ne versionne jamais d'outils binaires lourds.
+# ── Outils de compilation portables (JDK, SDK, DevEnv) ──
+.dev-env/
 .tools/
+.backups/
 
 # ── Artefacts de build Android (Gradle) ──
-# Ces fichiers sont générés lors de la compilation APK.
-files/android/.gradle/
-files/android/app/build/
-files/android/build/
-files/android/capacitor-cordova-android-plugins/build/
+platforms/android-apk/.gradle/
+platforms/android-apk/app/build/
+platforms/android-apk/build/
 *.apk
 *.aab
 

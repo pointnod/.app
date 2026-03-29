@@ -1,14 +1,14 @@
-# Pixel Art Pro | Master Key Monorepo
+# pointnod-app | Monorepo Ecosystème Art & Code
 
-Répertoire unifié pour le développement multi-plateforme de l'écosystème `.app`.
+Répertoire unifié pour le développement multi-plateforme de l'écosystème **pointnod-app**.
 
 ## 📂 Structure du Projet
-- `/core` : Source de vérité (Assets JSON, Palettes, Logique métier partagée).
+- `/core` : Source de vérité (Assets JSON, Design Rules, Logique métier partagée).
 - `/platforms` :
-    - `/web-mobile` : Application PWA (HTML/JS) - Anciennement dossier `files`.
-    - `/android-apk` : Projet Capacitor / Android Studio.
-    - `/godot-engine` : Version haute performance (GDScript).
-- `/scripts` : Outils d'automatisation (Backup, Sync, Setup).
+    - `/web-mobile` : Application PWA (HTML/JS) — Cœur applicatif **pointnod-app**.
+    - `/android-apk` : Projet Capacitor / Android Studio — Cible APK native.
+    - `/godot-engine` : Version haute performance (Godot / GDScript).
+- `/scripts` : Outils d'automatisation (Backup, Sync, Server).
 - `/.dev-env` : Binaires portables (Node, JDK, Godot) - *Ignoré par Git*.
 - `/.backups` : Sauvegardes locales compressées - *Ignoré par Git*.
 
