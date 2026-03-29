@@ -1,0 +1,88 @@
+/* 
+ * .nod — Design Rules
+ * Premium Glassmorphism & Dark Mode Tokens
+ */
+
+ :root {
+  /* ── Color Palette ── */
+  --bg-base: #0a0a0c;          /* Deepest background */
+  --bg-surface: #121216;       /* Elevated surface */
+  
+  --accent-primary: #e5cf82;   /* Muted gold, elegant & premium */
+  --accent-hover: #f3df96;
+  --accent-active: #d4bc64;
+  
+  --danger: #ff5e5e;
+  --danger-hover: #ff7676;
+  
+  --text-main: #f0f0f5;        /* Crisp white/gray text */
+  --text-muted: #8e8e9e;       /* Subtle text for labels */
+  --text-inverse: #121216;
+
+  /* ── Glassmorphism Variables ── */
+  --glass-bg: rgba(26, 26, 30, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.15);
+  --glass-blur: blur(24px);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+
+  /* ── Typography ── */
+  --font-sans: 'Inter', 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  
+  /* ── Sizing & Spacing ── */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* ── Transitions & Animations ── */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Base Body Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; /* App-like feel */
+  user-select: none;
+}
+
+/* Glass Panels Utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur); /* Safari */
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-md);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
