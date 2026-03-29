@@ -4,6 +4,7 @@ Ce document définit les règles, principes et standards qui régissent la colla
 
 ## 1. Objectifs et Principes de Collaboration
 * **Source de Vérité Vivante** : Ce fichier `GEMINI.md` doit être obligatoirement mis à jour à chaque nouvelle itération majeure, changement de paradigme ou introduction de nouveaux outils, pour rester la source de vérité absolue du projet.
+* **Ciblage Mobile (v1.0.0)** : Le livrable final de cette application est une **APK Android Native (`.nod.app v1.0.0 (mobile)`)**. L'approche utilise une enveloppe PWA robuste transcodée via Capacitor CLI, en s'appuyant sur les environnements Java et Gradle locaux du profil de développement, sans nécessiter Android Studio.
 * **Développement Piloté par l'Architecture** : Chaque modification doit s'inscrire rigoureusement dans l'architecture définie (hiérarchie modulaire stricte, graphe de dépendance unidirectionnel).
 * **Qualité Visuelle Premium** : Un focus systématique est mis sur l'impact visuel de l'application ("Glass-Tech", Dark mode premium, micro-animations). L'expérience utilisateur (UX/UI) compte autant que le code sous-jacent.
 * **Sécurité & Versioning (Règle Absolue)** : Chaque nouvelle itération majeure doit être précédée et/ou suivie par une sauvegarde (commit Git). L'objectif est de toujours conserver une trace fonctionnelle et d'éviter la perte d'une version stable.

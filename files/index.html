@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Pixel Art Pro | .app</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#18181b" />
   <link rel="stylesheet" href="css/design-rules.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
@@ -169,6 +171,16 @@
       <button id="tutorialClose" class="close-btn">&times;</button>
     </div>
   </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((registration) => { console.log('[.app] ServiceWorker registered with scope: ', registration.scope); })
+          .catch((error) => { console.error('[.app] ServiceWorker registration failed: ', error); });
+      });
+    }
+  </script>
 
   <!-- Entry point — ES module -->
   <script type="module" src=".app/App.js"></script>
