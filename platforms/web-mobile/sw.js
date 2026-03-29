@@ -1,10 +1,10 @@
-const CACHE_NAME = 'nod-app-v1.0.0';
+const CACHE_NAME = 'pointnod-app-v1.0.0';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './css/design-rules.css',
   './css/style.css',
-  './.app/App.js',
+  './pointnod-app/App.js',
   './manifest.json'
 ];
 
