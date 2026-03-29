@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.app Launcher | Écosystème .nod</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0c0c0e;
+            --accent-primary: #e5cf82;
+            --accent-secondary: #c9a55c;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #e2e2e7;
+            --text-muted: #a1a1aa;
+            --card-radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(229, 207, 130, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(201, 165, 92, 0.05) 0%, transparent 40%);
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard {
+            width: 1000px;
+            height: 700px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            padding: 40px 30px;
+            border-right: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .logo-area {
+            margin-bottom: 60px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent-primary);
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-item {
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+        }
+
+        .nav-item.active {
+            background: rgba(229, 207, 130, 0.1);
+            color: var(--accent-primary);
+        }
+
+        /* MAIN CONTENT */
+        .main-view {
+            padding: 60px;
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .grid-platforms {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .platform-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--accent-primary);
+        }
+
+        .platform-card.active::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: var(--accent-primary);
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 20px;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .platform-status {
+            font-size: 12px;
+            color: #4ade80;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* PARAMETERS */
+        .params-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .param-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .param-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .toggle {
+            width: 44px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .toggle.active {
+            background: var(--accent-primary);
+        }
+
+        .toggle-dot {
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: all 0.3s;
+        }
+
+        .toggle.active .toggle-dot {
+            left: 23px;
+        }
+
+        .action-bar {
+            position: absolute;
+            bottom: 40px;
+            left: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(229, 207, 130, 0.3);
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .platform-card {
+            animation: fadeIn 0.6s ease backwards;
+        }
+
+        .platform-card:nth-child(2) { animation-delay: 0.1s; }
+        .platform-card:nth-child(3) { animation-delay: 0.2s; }
+
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-text">
+                    <div class="logo-dot"></div>
+                    .app Launcher
+                </div>
+            </div>
+
+            <nav class="nav">
+                <div class="nav-item active">Dashboard</div>
+                <div class="nav-item">Core Assets</div>
+                <div class="nav-item">Logic Modules</div>
+                <div class="nav-item">Documentation</div>
+                <div class="nav-item">Environnement</div>
+            </nav>
+
+            <div class="status-box" style="margin-top: auto; padding-top: 40px; border-top: 1px solid var(--glass-border);">
+                <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">SESSION</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px;">dev-standalone-v1</div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-view">
+            <h1 id="welcome-text">Playground</h1>
+            <p class="subtitle">Sélectionnez une plateforme cible pour lancer le point d'entrée.</p>
+
+            <div class="grid-platforms">
+                <div class="platform-card active" id="web-btn">
+                    <div class="icon-circle">🌐</div>
+                    <div class="platform-name">Web-Mobile</div>
+                    <div class="platform-status"><span style="width: 5px; height: 5px; background: #4ade80; border-radius: 50%;"></span>Ready</div>
+                </div>
+                <div class="platform-card" id="android-btn">
+                    <div class="icon-circle">📱</div>
+                    <div class="platform-name">Android-APK</div>
+                    <div class="platform-status"><span style="width: 5px; height: 5px; background: #fbbf24; border-radius: 50%;"></span>Build Required</div>
+                </div>
+                <div class="platform-card" id="godot-btn">
+                    <div class="icon-circle">🤖</div>
+                    <div class="platform-name">Godot Engine</div>
+                    <div class="platform-status"><span style="width: 5px; height: 5px; background: #ef4444; border-radius: 50%;"></span>Placeholder</div>
+                </div>
+            </div>
+
+            <div class="params-panel">
+                <div class="section-title">Paramètres de Lancement</div>
+                
+                <div class="param-row">
+                    <div class="param-label">Mode Live Reload (HMR)</div>
+                    <div class="toggle active"><div class="toggle-dot"></div></div>
+                </div>
+
+                <div class="param-row">
+                    <div class="param-label">Debug Inspector</div>
+                    <div class="toggle"><div class="toggle-dot"></div></div>
+                </div>
+
+                <div class="param-row">
+                    <div class="param-label">Auto-Sync Core Assets</div>
+                    <div class="toggle active"><div class="toggle-dot"></div></div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <button class="btn btn-outline" onclick="window.location.reload()">Réinitialiser</button>
+                <button class="btn btn-primary" id="launch-btn">Lancer l'Application</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const launchBtn = document.getElementById('launch-btn');
+        const webBtn = document.getElementById('web-btn');
+        const androidBtn = document.getElementById('android-btn');
+        const godotBtn = document.getElementById('godot-btn');
+
+        let selected = 'web';
+
+        function updateSelection(mode) {
+            selected = mode;
+            [webBtn, androidBtn, godotBtn].forEach(b => b.classList.remove('active'));
+            document.getElementById(`${mode}-btn`).classList.add('active');
+            
+            if(mode === 'web') {
+                launchBtn.innerText = "Lancer Serveur Vite";
+            } else if(mode === 'android') {
+                launchBtn.innerText = "Compiler & Lancer APK";
+            } else {
+                launchBtn.innerText = "Ouvrir dans Godot";
+            }
+        }
+
+        webBtn.onclick = () => updateSelection('web');
+        androidBtn.onclick = () => updateSelection('android');
+        godotBtn.onclick = () => updateSelection('godot');
+
+        launchBtn.onclick = () => {
+            alert(`Point d'entrée pour ${selected} configuré. Dans l'environnement autonome, remplacez ceci par un appel aux scripts/start-${selected}.ps1`);
+        }
+
+        // Animation on text
+        const text = document.getElementById('welcome-text');
+        text.style.transition = 'all 1s';
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Portabilité et Backups
+.dev-env/
+.backups/
+
+# Dependances et Logs
+node_modules/
+dist/
+.DS_Store
+npm-debug.log*
+
+# Android Builds
+platforms/android-apk/android/.gradle/
+platforms/android-apk/android/app/build/
+platforms/android-apk/android/app/src/main/assets/www/
+*.apk
+
+# Godot Engine
+platforms/godot-engine/.import/
+platforms/godot-engine/export_presets.cfg
