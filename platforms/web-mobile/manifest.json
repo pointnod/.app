@@ -1,6 +1,6 @@
 {
-  "name": "pointnod-app",
-  "short_name": "pointnod-app",
+  "name": ".nod.app.1.0.0",
+  "short_name": ".nod.app.1.0.0",
   "version": "1.0.0",
   "description": "Module mobile d'édition de textures Pixel Art",
   "start_url": "./index.html",

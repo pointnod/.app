@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pointnod-app Launcher | Écosystème pointnod</title>
+    <title>.app Launcher | Écosystème .nod</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-color: #0c0c0e;
@@ -27,7 +30,7 @@
 
         body {
             background-color: var(--bg-color);
-            background-image: 
+            background-image:
                 radial-gradient(circle at 20% 20%, rgba(229, 207, 130, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 80% 80%, rgba(201, 165, 92, 0.05) 0%, transparent 40%);
             font-family: 'Outfit', sans-serif;
@@ -157,7 +160,10 @@
         .platform-card.active::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; height: 3px;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
             background: var(--accent-primary);
         }
 
@@ -292,19 +298,31 @@
 
         /* ANIMATIONS */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .platform-card {
             animation: fadeIn 0.6s ease backwards;
         }
 
-        .platform-card:nth-child(2) { animation-delay: 0.1s; }
-        .platform-card:nth-child(3) { animation-delay: 0.2s; }
+        .platform-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
 
+        .platform-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="dashboard">
@@ -313,7 +331,7 @@
             <div class="logo-area">
                 <div class="logo-text">
                     <div class="logo-dot"></div>
-                    pointnod-app Launcher
+                    .nod.app.1.0.0 Launcher
                 </div>
             </div>
 
@@ -325,7 +343,8 @@
                 <div class="nav-item">Environnement</div>
             </nav>
 
-            <div class="status-box" style="margin-top: auto; padding-top: 40px; border-top: 1px solid var(--glass-border);">
+            <div class="status-box"
+                style="margin-top: auto; padding-top: 40px; border-top: 1px solid var(--glass-border);">
                 <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">SESSION</div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px;">dev-standalone-v1</div>
             </div>
@@ -340,36 +359,47 @@
                 <div class="platform-card active" id="web-btn">
                     <div class="icon-circle">🌐</div>
                     <div class="platform-name">Web-Mobile</div>
-                    <div class="platform-status"><span style="width: 5px; height: 5px; background: #4ade80; border-radius: 50%;"></span>Ready</div>
+                    <div class="platform-status"><span
+                            style="width: 5px; height: 5px; background: #4ade80; border-radius: 50%;"></span>Ready</div>
                 </div>
                 <div class="platform-card" id="android-btn">
                     <div class="icon-circle">📱</div>
                     <div class="platform-name">Android-APK</div>
-                    <div class="platform-status"><span style="width: 5px; height: 5px; background: #fbbf24; border-radius: 50%;"></span>Build Required</div>
+                    <div class="platform-status"><span
+                            style="width: 5px; height: 5px; background: #fbbf24; border-radius: 50%;"></span>Build
+                        Required</div>
                 </div>
                 <div class="platform-card" id="godot-btn">
                     <div class="icon-circle">🤖</div>
                     <div class="platform-name">Godot Engine</div>
-                    <div class="platform-status"><span style="width: 5px; height: 5px; background: #ef4444; border-radius: 50%;"></span>Placeholder</div>
+                    <div class="platform-status"><span
+                            style="width: 5px; height: 5px; background: #ef4444; border-radius: 50%;"></span>Placeholder
+                    </div>
                 </div>
             </div>
 
             <div class="params-panel">
                 <div class="section-title">Paramètres de Lancement</div>
-                
+
                 <div class="param-row">
                     <div class="param-label">Mode Live Reload (HMR)</div>
-                    <div class="toggle active"><div class="toggle-dot"></div></div>
+                    <div class="toggle active">
+                        <div class="toggle-dot"></div>
+                    </div>
                 </div>
 
                 <div class="param-row">
                     <div class="param-label">Debug Inspector</div>
-                    <div class="toggle"><div class="toggle-dot"></div></div>
+                    <div class="toggle">
+                        <div class="toggle-dot"></div>
+                    </div>
                 </div>
 
                 <div class="param-row">
                     <div class="param-label">Auto-Sync Core Assets</div>
-                    <div class="toggle active"><div class="toggle-dot"></div></div>
+                    <div class="toggle active">
+                        <div class="toggle-dot"></div>
+                    </div>
                 </div>
             </div>
 
@@ -392,10 +422,10 @@
             selected = mode;
             [webBtn, androidBtn, godotBtn].forEach(b => b.classList.remove('active'));
             document.getElementById(`${mode}-btn`).classList.add('active');
-            
-            if(mode === 'web') {
+
+            if (mode === 'web') {
                 launchBtn.innerText = "Lancer Serveur Vite";
-            } else if(mode === 'android') {
+            } else if (mode === 'android') {
                 launchBtn.innerText = "Compiler & Lancer APK";
             } else {
                 launchBtn.innerText = "Ouvrir dans Godot";
@@ -415,4 +445,5 @@
         text.style.transition = 'all 1s';
     </script>
 </body>
+
 </html>
