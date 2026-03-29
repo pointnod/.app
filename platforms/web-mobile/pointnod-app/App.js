@@ -1,5 +1,5 @@
 /**
- * .app — App Bootstrap
+ * pointnod-app — App Bootstrap
  * Entry point. Wires core systems, registers modules, activates default.
  *
  * Load order:
@@ -10,13 +10,13 @@
  *   5. Default activation — 'pixels'
  */
 
-import { registry } from './.modules/core/ModuleRegistry.js';
-import { bus } from './.modules/core/EventBus.js';
-import { PixelModule } from './.modules/tools/PixelModule.js';
-import { PixelUI } from './.modules/tools/ui/PixelUI.js';
-import { SidebarController } from './.modules/ui/SidebarController.js';
-import { TutorialController } from './.modules/ui/TutorialController.js';
-import { RulerController } from './.modules/ui/RulerController.js';
+import { registry } from './modules/core/ModuleRegistry.js';
+import { bus } from './modules/core/EventBus.js';
+import { PixelModule } from './modules/tools/PixelModule.js';
+import { PixelUI } from './modules/tools/ui/PixelUI.js';
+import { SidebarController } from './modules/ui/SidebarController.js';
+import { TutorialController } from './modules/ui/TutorialController.js';
+import { RulerController } from './modules/ui/RulerController.js';
 
 /**
  * Fonction d'amorçage asynchrone (Boot).
@@ -24,7 +24,7 @@ import { RulerController } from './.modules/ui/RulerController.js';
  * d'activer le module Pixel Art.
  */
 async function boot() {
-  console.log('[.app] Booting…');
+  console.log('[pointnod-app] Booting…');
 
   // ── UI controllers (stateless, can init before modules) ──
   // Ces contrôleurs gèrent l'interaction hors de la zone de dessin (Tooltips, Menus).
@@ -80,7 +80,7 @@ async function boot() {
   // Active par défaut le module "pixels" une fois la configuration terminée.
   await registry.activate('pixels');
 
-  console.log('[.app] Ready ✓ | Modules:', registry.listIds());
+  console.log('[pointnod-app] Ready ✓ | Modules:', registry.listIds());
 }
 
-boot().catch(err => console.error('[.app] Boot failed:', err));
+boot().catch(err => console.error('[pointnod-app] Boot failed:', err));

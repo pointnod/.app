@@ -1,5 +1,5 @@
 /**
- * .app UI — TutorialController
+ * pointnod-app UI — TutorialController
  * Self-contained tutorial overlay — no external dependencies.
  */
 
@@ -15,7 +15,7 @@ const STEPS = [
   { title: 'Palette & harmony',
     text:  'Pick a harmony mode (Monochrome, Analogous…) to auto-generate a palette from your base color. Shuffle for random inspiration.' },
   { title: 'Save & export',
-    text:  'Export 1:1 PNG or 20× HD for print. Save as .app.json to resume later — all state is preserved including undo history.' },
+    text:  'Export 1:1 PNG or 20× HD for print. Save as pointnod-app.json to resume later — all state is preserved including undo history.' },
 ];
 
 export class TutorialController {

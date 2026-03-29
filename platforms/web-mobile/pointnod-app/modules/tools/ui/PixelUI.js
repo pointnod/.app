@@ -1,5 +1,5 @@
 /**
- * .app Pixels — PixelUI
+ * pointnod-app Pixels — PixelUI
  * Owns all DOM read/write for the pixel module.
  * Never calls engine methods directly — communicates via EventBus only.
  *
@@ -203,7 +203,7 @@ export class PixelUI {
         sw.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       });
 
-      anchor ? row.insertBefore(sw, anchor) : row.appendChild(sw);
+      anchor ? row.insertBefore(sw, anchor) : rowpointnod-appendChild(sw);
     });
   }
 
@@ -233,7 +233,7 @@ export class PixelUI {
       this.#el.pixelCount.textContent = `${count} Pixel${count !== 1 ? 's' : ''}`;
 
     if (this.#el.systemPath)
-      this.#el.systemPath.textContent = `.app / module / Texture Editor / ${tool} / ${color}`;
+      this.#el.systemPath.textContent = `pointnod-app / module / Texture Editor / ${tool} / ${color}`;
 
     if (this.#el.systemMetrics)
       this.#el.systemMetrics.textContent = `Grid: ${state.gridSize}×${state.gridSize} | Zoom: ×${state.viewScale?.toFixed(1) ?? '1.0'}`;

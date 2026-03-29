@@ -1,5 +1,5 @@
 /**
- * .app UI — RulerController
+ * pointnod-app UI — RulerController
  * Renders H/V rulers that track the canvas viewport position.
  * Listens to viewMoved events from PixelModule.
  */
@@ -40,7 +40,7 @@ export class RulerController {
         mark.className   = 'ruler-mark';
         mark.style.left  = `${startX + i * step}px`;
         mark.textContent = i;
-        rulerH.appendChild(mark);
+        rulerHpointnod-appendChild(mark);
       }
     }
 
@@ -51,7 +51,7 @@ export class RulerController {
         mark.className   = 'ruler-mark';
         mark.style.top   = `${startY + i * step}px`;
         mark.textContent = i;
-        rulerV.appendChild(mark);
+        rulerVpointnod-appendChild(mark);
       }
     }
   }

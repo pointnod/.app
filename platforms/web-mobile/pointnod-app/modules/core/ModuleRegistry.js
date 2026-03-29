@@ -1,5 +1,5 @@
 /**
- * .app Core — ModuleRegistry
+ * pointnod-app Core — ModuleRegistry
  * Manages module lifecycle: register → activate → deactivate.
  * Modules implement { id, label, activate(), deactivate() }.
  *

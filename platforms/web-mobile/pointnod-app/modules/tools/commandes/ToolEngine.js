@@ -1,5 +1,5 @@
 /**
- * .app Pixels — ToolEngine
+ * pointnod-app Pixels — ToolEngine
  * Strategy pattern: each tool is a class implementing apply(x, y, context).
  * ToolEngine routes pointer events to the active strategy.
  *
@@ -30,7 +30,7 @@ export class ToolEngine {
   }
 
   apply(x, y, ctx) {
-    this.#strategies[this.#active]?.apply(x, y, ctx);
+    this.#strategies[this.#active]?pointnod-apply(x, y, ctx);
   }
 
   get currentId() { return this.#active; }

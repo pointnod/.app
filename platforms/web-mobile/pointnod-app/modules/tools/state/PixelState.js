@@ -1,5 +1,5 @@
 /**
- * .app Pixels — PixelState
+ * pointnod-app Pixels — PixelState
  * Single source of truth for the pixel editor module.
  * Consumed by PixelModule (engine) and PixelUI (DOM).
  */
