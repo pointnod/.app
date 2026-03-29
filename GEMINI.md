@@ -8,8 +8,9 @@ Ce document définit les règles, principes et standards qui régissent la colla
 * **Environnement Standalone & Portable** : Aucun outil (Node, Godot, Git) ne doit être installé globalement. Tout réside dans `.dev-env/`. L'utilisation de `start-dev.bat` est obligatoire pour initialiser les variables d'environnement locales.
 * **Développement Piloté par l'Architecture** : Chaque modification doit s'inscrire rigoureusement dans l'architecture définie (hiérarchie modulaire stricte).
 * **Qualité Visuelle Premium** : Un focus systématique est mis sur l'impact visuel ("Glass-Tech", Dark mode premium). 
-* **Sécurité & Versioning (Règle Absolue)** : Chaque session commence par une vérification GIT et se termine par un `./scripts/backup.ps1`.
-* **Code Pédagogique (Règle Absolue)** : Le code produit doit systèmatiquement être annoté de manière claire, éducative et pédagogique pour assurer la continuité du projet.
+* **Sécurité & Versioning (Règle Absolue)** : Chaque session commence par une vérification GIT et se termine par un `./scripts/backup.ps1`. Un fichier `CHANGELOG.md` doit être mis à jour à chaque itération majeure ou correctif critique.
+* **Code Pédagogique (Règle Absolue)** : Le code produit doit systèmatiquement être annoté de manière claire, éducative et pédagogique.
+* **Stratégie de Merge** : Utilisation de snapshots Git réguliers. Pour chaque session, un commit descriptif résumant les changements est obligatoire.
 
 ## 2. Structure des Livrables
 * **Dashboard Launcher (`index.html` racine)** : Le point d'entrée visuel premium pour gérer les serveurs et builds.

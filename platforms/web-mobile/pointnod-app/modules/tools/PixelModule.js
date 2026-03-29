@@ -95,7 +95,7 @@ export class PixelModule {
     this.#canvas.drawGrid();
     this.#canvas.redrawAll(pixels, gridSize);
     this.#canvas.updatePreview(pixels, gridSize);
-    this.#canvaspointnod-applyViewTransform(viewX, viewY, viewScale);
+    this.#canvas.applyViewTransform(viewX, viewY, viewScale);
     this.#updatePixelCount();
   }
 
@@ -137,7 +137,7 @@ export class PixelModule {
         });
         this.#lastPtr = { x: e.clientX, y: e.clientY };
         const { viewX, viewY, viewScale } = pixelState.get();
-        this.#canvaspointnod-applyViewTransform(viewX, viewY, viewScale);
+        this.#canvas.applyViewTransform(viewX, viewY, viewScale);
         bus.emit('pixels:viewMoved');
         return;
       }
@@ -161,7 +161,7 @@ export class PixelModule {
       const newScale = Math.max(0.1, Math.min(5, pixelState.get('viewScale') + delta));
       pixelState.set('viewScale', newScale);
       const { viewX, viewY } = pixelState.get();
-      this.#canvaspointnod-applyViewTransform(viewX, viewY, newScale);
+      this.#canvas.applyViewTransform(viewX, viewY, newScale);
       bus.emit('pixels:viewMoved');
     };
 
@@ -178,7 +178,7 @@ export class PixelModule {
       pinchDist      = dist;
       pixelState.set('viewScale', newScale);
       const { viewX, viewY } = pixelState.get();
-      this.#canvaspointnod-applyViewTransform(viewX, viewY, newScale);
+      this.#canvas.applyViewTransform(viewX, viewY, newScale);
     };
     const onTouchEnd = () => { pinchDist = null; };
 
@@ -232,7 +232,7 @@ export class PixelModule {
       bus.emit('pixels:historyChanged', { canUndo: this.#history.canUndo, canRedo: this.#history.canRedo });
     }
 
-    this.#toolspointnod-apply(x, y, {
+    this.#tools.apply(x, y, {
       color:    pixelState.get('currentColor'),
       pixels:   pixelState.get('pixels'),
       gridSize,
@@ -394,7 +394,7 @@ export class PixelModule {
     this.#canvas.drawGrid();
     this.#canvas.redrawAll(newPixels, gridSize);
     this.#canvas.updatePreview(newPixels, gridSize);
-    this.#canvaspointnod-applyViewTransform(...this.#viewArgs());
+    this.#canvas.applyViewTransform(...this.#viewArgs());
     this.#updatePixelCount();
     bus.emit('pixels:resized', { gridSize, pixelSize });
     bus.emit('pixels:viewMoved');

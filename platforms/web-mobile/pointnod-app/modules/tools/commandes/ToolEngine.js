@@ -30,7 +30,7 @@ export class ToolEngine {
   }
 
   apply(x, y, ctx) {
-    this.#strategies[this.#active]?pointnod-apply(x, y, ctx);
+    this.#strategies[this.#active]?.apply(x, y, ctx);
   }
 
   get currentId() { return this.#active; }

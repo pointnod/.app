@@ -40,7 +40,7 @@ export class RulerController {
         mark.className   = 'ruler-mark';
         mark.style.left  = `${startX + i * step}px`;
         mark.textContent = i;
-        rulerHpointnod-appendChild(mark);
+        rulerH.appendChild(mark);
       }
     }
 
@@ -51,7 +51,7 @@ export class RulerController {
         mark.className   = 'ruler-mark';
         mark.style.top   = `${startY + i * step}px`;
         mark.textContent = i;
-        rulerVpointnod-appendChild(mark);
+        rulerV.appendChild(mark);
       }
     }
   }

@@ -203,7 +203,7 @@ export class PixelUI {
         sw.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       });
 
-      anchor ? row.insertBefore(sw, anchor) : rowpointnod-appendChild(sw);
+      anchor ? row.insertBefore(sw, anchor) : row.appendChild(sw);
     });
   }
 
