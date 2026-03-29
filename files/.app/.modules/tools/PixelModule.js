@@ -1,7 +1,7 @@
 /**
- * .nod — PixelModule (.nod.module.pixels)
+ * .app — PixelModule (.app.module.tools)
  * Orchestrates all pixel art sub-systems.
- * Implements the .nod module interface: { id, label, activate(), deactivate() }
+ * Implements the .app module interface: { id, label, activate(), deactivate() }
  *
  * Architecture:
  *   PixelModule ──owns──▶ CanvasEngine  (renders)
@@ -14,12 +14,12 @@
  * UI (PixelUI) communicates via bus events only — never touches engines directly.
  */
 
-import { bus }           from '../../core/EventBus.js';
+import { bus }           from '../core/EventBus.js';
 import { pixelState }    from './state/PixelState.js';
-import { CanvasEngine }  from './engine/CanvasEngine.js';
-import { ToolEngine }    from './engine/ToolEngine.js';
-import { PaletteEngine } from './engine/PaletteEngine.js';
-import { HistoryEngine } from './engine/HistoryEngine.js';
+import { CanvasEngine }  from './commandes/CanvasEngine.js';
+import { ToolEngine }    from './commandes/ToolEngine.js';
+import { PaletteEngine } from './commandes/PaletteEngine.js';
+import { HistoryEngine } from './commandes/HistoryEngine.js';
 
 export class PixelModule {
   id    = 'pixels';
@@ -425,7 +425,7 @@ export class PixelModule {
   saveJSON() {
     const state = this.#snapshot();
     const blob  = new Blob([JSON.stringify({ version: 3, ...state })], { type: 'application/json' });
-    const a     = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'pixelart.nod.json' });
+    const a     = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'pixelart.app.json' });
     a.click();
   }
 

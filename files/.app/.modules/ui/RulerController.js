@@ -1,11 +1,11 @@
 /**
- * .nod UI — RulerController
+ * .app UI — RulerController
  * Renders H/V rulers that track the canvas viewport position.
  * Listens to viewMoved events from PixelModule.
  */
 
 import { bus }        from '../core/EventBus.js';
-import { pixelState } from '../modules/pixels/state/PixelState.js';
+import { pixelState } from '../tools/state/PixelState.js';
 
 export class RulerController {
   #subs = [];

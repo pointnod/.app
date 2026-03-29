@@ -1,5 +1,5 @@
 /**
- * .nod Core — ModuleRegistry
+ * .app Core — ModuleRegistry
  * Manages module lifecycle: register → activate → deactivate.
  * Modules implement { id, label, activate(), deactivate() }.
  *
@@ -23,7 +23,7 @@ export class ModuleRegistry {
       console.warn(`[Registry] Module "${id}" already registered — overwriting.`);
     }
     this.#modules.set(id, moduleInstance);
-    bus.emit('nod:module:registered', { id, label: moduleInstance.label });
+    bus.emit('app:module:registered', { id, label: moduleInstance.label });
     return this;
   }
 
@@ -34,7 +34,7 @@ export class ModuleRegistry {
     if (this.#active) {
       const prev = this.#modules.get(this.#active);
       try { await prev?.deactivate?.(); } catch (e) { console.error(e); }
-      bus.emit('nod:module:deactivated', { id: this.#active });
+      bus.emit('app:module:deactivated', { id: this.#active });
     }
 
     const mod = this.#modules.get(id);
@@ -45,7 +45,7 @@ export class ModuleRegistry {
 
     this.#active = id;
     try { await mod.activate?.(); } catch (e) { console.error(e); }
-    bus.emit('nod:module:activated', { id, label: mod.label });
+    bus.emit('app:module:activated', { id, label: mod.label });
   }
 
   get(id) { return this.#modules.get(id); }

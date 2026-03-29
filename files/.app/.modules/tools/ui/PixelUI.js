@@ -1,5 +1,5 @@
 /**
- * .nod Pixels — PixelUI
+ * .app Pixels — PixelUI
  * Owns all DOM read/write for the pixel module.
  * Never calls engine methods directly — communicates via EventBus only.
  *
@@ -10,7 +10,7 @@
  *  - Keep status bar / system path in sync
  */
 
-import { bus }        from '../../../core/EventBus.js';
+import { bus }        from '../../core/EventBus.js';
 import { pixelState } from '../state/PixelState.js';
 
 export class PixelUI {
@@ -233,7 +233,7 @@ export class PixelUI {
       this.#el.pixelCount.textContent = `${count} Pixel${count !== 1 ? 's' : ''}`;
 
     if (this.#el.systemPath)
-      this.#el.systemPath.textContent = `.nod / module / Texture Editor / ${tool} / ${color}`;
+      this.#el.systemPath.textContent = `.app / module / Texture Editor / ${tool} / ${color}`;
 
     if (this.#el.systemMetrics)
       this.#el.systemMetrics.textContent = `Grid: ${state.gridSize}×${state.gridSize} | Zoom: ×${state.viewScale?.toFixed(1) ?? '1.0'}`;

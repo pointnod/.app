@@ -1,5 +1,5 @@
 /**
- * .nod Core — StateManager
+ * .app Core — StateManager
  * Reactive state store scoped to a namespace.
  * Each module owns its own StateManager instance.
  *

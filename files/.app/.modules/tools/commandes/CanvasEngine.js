@@ -1,5 +1,5 @@
 /**
- * .nod Pixels — CanvasEngine
+ * .app Pixels — CanvasEngine
  * Owns all canvas I/O: grid, cells, full redraw, preview, export.
  * No state mutations, no bus events — pure rendering from the outside in.
  */

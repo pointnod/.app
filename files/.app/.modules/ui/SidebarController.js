@@ -1,5 +1,5 @@
 /**
- * .nod UI — SidebarController
+ * .app UI — SidebarController
  * Manages sidebar visibility mode: hover → locked → hidden → hover...
  * Self-contained — no bus events needed.
  */

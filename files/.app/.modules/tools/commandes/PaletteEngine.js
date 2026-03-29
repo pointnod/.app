@@ -1,5 +1,5 @@
 /**
- * .nod Pixels — PaletteEngine
+ * .app Pixels — PaletteEngine
  * Pure color generation — no state, no side effects.
  * All methods take inputs and return new arrays.
  */

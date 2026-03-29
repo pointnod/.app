@@ -1,5 +1,5 @@
 /**
- * .nod Core — EventBus
+ * .app Core — EventBus
  * Singleton pub/sub system for cross-layer communication.
  * All modules speak through events — zero direct coupling.
  *

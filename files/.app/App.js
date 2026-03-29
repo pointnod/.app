@@ -1,5 +1,5 @@
 /**
- * .nod — App Bootstrap
+ * .app — App Bootstrap
  * Entry point. Wires core systems, registers modules, activates default.
  *
  * Load order:
@@ -10,13 +10,13 @@
  *   5. Default activation — 'pixels'
  */
 
-import { registry } from './core/ModuleRegistry.js';
-import { bus } from './core/EventBus.js';
-import { PixelModule } from './modules/pixels/PixelModule.js';
-import { PixelUI } from './modules/pixels/ui/PixelUI.js';
-import { SidebarController } from './ui/SidebarController.js';
-import { TutorialController } from './ui/TutorialController.js';
-import { RulerController } from './ui/RulerController.js';
+import { registry } from './.modules/core/ModuleRegistry.js';
+import { bus } from './.modules/core/EventBus.js';
+import { PixelModule } from './.modules/tools/PixelModule.js';
+import { PixelUI } from './.modules/tools/ui/PixelUI.js';
+import { SidebarController } from './.modules/ui/SidebarController.js';
+import { TutorialController } from './.modules/ui/TutorialController.js';
+import { RulerController } from './.modules/ui/RulerController.js';
 
 /**
  * Fonction d'amorçage asynchrone (Boot).
@@ -24,7 +24,7 @@ import { RulerController } from './ui/RulerController.js';
  * d'activer le module Pixel Art.
  */
 async function boot() {
-  console.log('[.nod] Booting…');
+  console.log('[.app] Booting…');
 
   // ── UI controllers (stateless, can init before modules) ──
   // Ces contrôleurs gèrent l'interaction hors de la zone de dessin (Tooltips, Menus).
@@ -59,7 +59,7 @@ async function boot() {
   // ── Reflect active module in nav + panel visibility ──
   // Le bus d'évènement nous informe si le module actif change.
   // Lors de ce changement, nous masquons ou affichons les panneaux correspondants.
-  bus.on('nod:module:activated', ({ id }) => {
+  bus.on('app:module:activated', ({ id }) => {
     document.querySelectorAll('#sidebar-left .sidebar-circle[data-module]').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.module === id);
     });
@@ -80,7 +80,7 @@ async function boot() {
   // Active par défaut le module "pixels" une fois la configuration terminée.
   await registry.activate('pixels');
 
-  console.log('[.nod] Ready ✓ | Modules:', registry.listIds());
+  console.log('[.app] Ready ✓ | Modules:', registry.listIds());
 }
 
-boot().catch(err => console.error('[.nod] Boot failed:', err));
+boot().catch(err => console.error('[.app] Boot failed:', err));

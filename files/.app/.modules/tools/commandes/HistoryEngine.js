@@ -1,5 +1,5 @@
 /**
- * .nod Pixels — HistoryEngine
+ * .app Pixels — HistoryEngine
  * Undo / Redo with deep-copy snapshots.
  * Keeps stacks bounded to maxSize to cap memory usage.
  *

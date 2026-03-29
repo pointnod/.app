@@ -1,9 +1,9 @@
 /**
- * .nod Pixels — PixelState
+ * .app Pixels — PixelState
  * Single source of truth for the pixel editor module.
  * Consumed by PixelModule (engine) and PixelUI (DOM).
  */
-import { StateManager } from '../../../core/StateManager.js';
+import { StateManager } from '../../core/StateManager.js';
 
 export const pixelState = new StateManager('pixels', {
   // Canvas geometry

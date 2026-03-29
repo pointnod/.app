@@ -1,5 +1,5 @@
 /**
- * .nod Pixels — ToolEngine
+ * .app Pixels — ToolEngine
  * Strategy pattern: each tool is a class implementing apply(x, y, context).
  * ToolEngine routes pointer events to the active strategy.
  *
